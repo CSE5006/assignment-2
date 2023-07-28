@@ -1,0 +1,48 @@
+version: "3.8"
+
+services:
+  # nginx:
+  #   build:
+  #     context: ./nginx
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 80:80
+  #   depends_on:
+  #     - frontend
+  #     - api
+  #   links:
+  #     - frontend
+  #     - api
+
+  # frontend:
+  #   build: 
+  #     context: ./frontend
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 3000:3000
+  #   depends_on:
+  #     - api
+  #   volumes:
+  #     - ./frontend:/app
+  
+  # api:
+  #   build: 
+  #     context: ./api
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 5000:5000
+  #   volumes:
+  #     - ./api:/app
+  #   depends_on:
+  #     - db
+  #   links:
+  #     - db
+
+  db:
+    image: postgres:15.3-alpine3.18
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
