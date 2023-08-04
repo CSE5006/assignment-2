@@ -1,17 +1,17 @@
 module.exports = app => {
-    const contacts = require("../controllers/phone.controller.js");
+    const phones = require("../controllers/phone.controller.js");
   
     var router = require("express").Router();
   
-    router.post("/", contacts.create);
+    router.post("/contacts/:contactId/phones", phones.create);
   
-    router.get("/", contacts.findAll);
+    router.get("/contacts/:contactId/phones", phones.findAll);
   
-    router.get("/:phoneId", contacts.findOne);
+    router.get("/contacts/:contactId/phones/:phoneId", phones.findOne);
   
-    router.put("/:phoneId", contacts.update);
+    router.put("/contacts/:contactId/phones/:phoneId", phones.update);
   
-    router.delete("/:phoneId", contacts.delete);
+    router.delete("/contacts/:contactId/phones/:phoneId", phones.delete);
   
-    app.use('/api/contacts/:contactId/phones', router);
+    app.use('/api', router);
 };
